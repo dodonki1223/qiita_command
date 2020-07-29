@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 # Qiitaのトレンドを取得できるgem
 # https://github.com/dodonki1223/qiita_trend
