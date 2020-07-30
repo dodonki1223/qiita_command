@@ -8,7 +8,7 @@ module QiitaCommands
   describe CLI do
     describe '#initialise' do
       shared_examples 'system shutdown' do
-        include_context 'set command line args'
+        include_context 'when set command line args'
         include_context 'when disable standard output'
 
         subject { described_class.new }
@@ -38,42 +38,38 @@ module QiitaCommands
     end
 
     describe '#has?' do
+      let(:cli) { described_class.new }
+
       context 'when exists key name' do
-        include_context 'set command line args'
+        include_context 'when set command line args'
         let(:argv) { %w[] }
 
-        subject { described_class.new.has?(:target) }
-
-        it { is_expected.to eq(true) }
+        it { expect(cli.has?(:target)).to eq(true) }
       end
 
       context 'when not exists key name' do
-        include_context 'set command line args'
+        include_context 'when set command line args'
         let(:argv) { %w[] }
 
-        subject { described_class.new.has?(:hoge) }
-
-        it { is_expected.to eq(false) }
+        it { expect(cli.has?(:hoge)).to eq(false) }
       end
     end
 
     describe '#get' do
+      let(:cli) { described_class.new }
+
       context 'when exists key name' do
-        include_context 'set command line args'
+        include_context 'when set command line args'
         let(:argv) { %w[] }
 
-        subject { described_class.new.get(:target) }
-
-        it { is_expected.to eq('daily') }
+        it { expect(cli.get(:target)).to eq('daily') }
       end
 
-      context 'when exists key name' do
-        include_context 'set command line args'
+      context 'when not exists key name' do
+        include_context 'when set command line args'
         let(:argv) { %w[] }
 
-        subject { described_class.new.get(:hoge) }
-
-        it { is_expected.to eq('') }
+        it { expect(cli.get(:hoge)).to eq('') }
       end
     end
   end

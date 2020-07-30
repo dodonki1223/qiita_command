@@ -56,7 +56,7 @@ module QiitaCommands
     end
 
     before do
-      qiita_trend_mock = double('QiitaTrend::Trend Mock')
+      qiita_trend_mock = instance_double('QiitaTrend::Trend Mock')
       allow(qiita_trend_mock).to receive(:items).and_return(trend_items)
       allow(qiita_trend_mock).to receive(:new_items).and_return(trend_new_items)
       allow(QiitaTrend::Trend).to receive(:new).with(type).and_return(qiita_trend_mock)
@@ -72,14 +72,14 @@ module QiitaCommands
       end
 
       context 'when trend type is weekly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::WEEKLY }
 
         it { expect(trend.daily?).to eq(false) }
       end
 
       context 'when trend type is monthly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::MONTHLY }
 
         it { expect(trend.daily?).to eq(false) }
@@ -96,14 +96,14 @@ module QiitaCommands
       end
 
       context 'when trend type is weekly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::WEEKLY }
 
         it { expect(trend.weekly?).to eq(true) }
       end
 
       context 'when trend type is monthly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::MONTHLY }
 
         it { expect(trend.weekly?).to eq(false) }
@@ -120,14 +120,14 @@ module QiitaCommands
       end
 
       context 'when trend type is weekly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::WEEKLY }
 
         it { expect(trend.monthly?).to eq(false) }
       end
 
       context 'when trend type is monthly' do
-        include_context 'mock config.yml'
+        include_context 'when mocking config.yml'
         let(:type) { QiitaTrend::TrendType::MONTHLY }
 
         it { expect(trend.monthly?).to eq(true) }
@@ -135,7 +135,7 @@ module QiitaCommands
     end
 
     shared_examples 'contains title and laikes_count and article' do
-      include_context 'mock config.yml'
+      include_context 'when mocking config.yml'
       let(:type) { QiitaTrend::TrendType::DAILY }
 
       it 'タイトル、いいね数、ページURLが含まれていること' do

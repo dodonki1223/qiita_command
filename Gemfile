@@ -14,6 +14,8 @@ gem 'rspec'
 group :development do
   # https://github.com/rubocop-hq/rubocop
   gem 'rubocop', '~> 0.88.0', require: false
+  # https://github.com/rubocop-hq/rubocop-rspec
+  gem 'rubocop-rspec', require: false
   # コンソールの出力を読みやすい形で表示してくれる
   # https://github.com/awesome-print/awesome_print
   gem 'awesome_print'

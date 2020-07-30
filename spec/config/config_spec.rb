@@ -6,7 +6,7 @@ require './qiita_commands/config/config'
 module QiitaCommands
   describe Config do
     describe '#initialise' do
-      include_context 'mock config.yml'
+      include_context 'when mocking config.yml'
 
       subject(:config) { described_class.new }
 
