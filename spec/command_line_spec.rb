@@ -49,7 +49,7 @@ module QiitaCommands
         it { is_expected.to eq(true) }
       end
 
-      context 'when exists key name' do
+      context 'when not exists key name' do
         include_context 'set command line args'
         let(:argv) { %w[] }
 

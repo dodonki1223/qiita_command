@@ -9,12 +9,13 @@ module QiitaCommands
     attr_accessor :options
 
     def initialize
-      @options = { target: 'daily' }
+      @options = { target: 'daily', new: false }
       opts = OptionParser.new
 
-      opts.on('-d', '--daily', 'get daily qiita trend')     { @options[:target] = QiitaTrend::TrendType::DAILY }
-      opts.on('-w', '--weekly', 'get weekly qiita trend')   { @options[:target] = QiitaTrend::TrendType::WEEKLY }
-      opts.on('-m', '--monthly', 'get monthly qiita trend') { @options[:target] = QiitaTrend::TrendType::MONTHLY }
+      opts.on('-d', '--daily', 'get daily qiita trend')         { @options[:target] = QiitaTrend::TrendType::DAILY }
+      opts.on('-w', '--weekly', 'get weekly qiita trend')       { @options[:target] = QiitaTrend::TrendType::WEEKLY }
+      opts.on('-m', '--monthly', 'get monthly qiita trend')     { @options[:target] = QiitaTrend::TrendType::MONTHLY }
+      opts.on('-n', '--new', 'get qiita trend for new article') { |v| @options[:new] = v }
 
       raise QiitaCommands::InvalidOption, 'Invalid option: Multiple daily and weekly and monthly cannot be specified.' unless valid_args?
 
