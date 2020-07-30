@@ -27,3 +27,7 @@ group :development do
   # https://github.com/deivid-rodriguez/pry-byebug
   gem 'pry-byebug'
 end
+
+group :test do
+  gem 'simplecov', require: false
+end

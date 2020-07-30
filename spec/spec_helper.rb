@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 require 'pry'
+require 'simplecov'
 require 'support/cli_spec_behavior'
 require 'support/command_line_args_helper'
 require 'support/config_yaml_helper'
+
+# SimpleCovのロード処理（RSpecのファイルは除外する）
+SimpleCov.start do
+  add_filter '/spec/'
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

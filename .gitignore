@@ -4,3 +4,6 @@
 
 # config.yml の除外
 config.yml
+
+# simplecovのディレクトリを除外
+/coverage

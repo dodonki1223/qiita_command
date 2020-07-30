@@ -19,7 +19,7 @@ module QiitaCommands
       end
 
       context 'when not exitst command line args' do
-        let(:argv) { %w[-hoge] }
+        let(:argv) { %w[--hoge] }
 
         include_examples 'system shutdown'
       end
