@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require './spec/spec_helper'
-require './spec/support/config_yaml_helper'
 require './qiita_commands/config/config'
 
 module QiitaCommands

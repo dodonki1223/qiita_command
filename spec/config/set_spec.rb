@@ -2,7 +2,6 @@
 
 require 'qiita_trend'
 require './spec/spec_helper'
-require './spec/support/config_yaml_helper'
 require './qiita_commands/config/set'
 
 module QiitaCommands
