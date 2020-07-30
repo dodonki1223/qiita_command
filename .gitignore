@@ -3,4 +3,4 @@
 /vendor/bundle
 
 # config.yml の除外
-/qiita_commands/config/config.yml
+config.yml

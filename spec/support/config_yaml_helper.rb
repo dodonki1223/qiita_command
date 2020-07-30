@@ -10,6 +10,6 @@ RSpec.shared_context 'mock config.yml' do
   end
 
   before do
-    allow(YAML).to receive(:load_file).with('./qiita_commands/config/config.yml').and_return(mock_yaml)
+    allow(YAML).to receive(:load_file).with('./config.yml').and_return(mock_yaml)
   end
 end
