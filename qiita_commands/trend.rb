@@ -34,7 +34,7 @@ module QiitaCommands
     attr_reader :type, :target
 
     def item_shaping(item, index)
-      prefix         = index.to_s.rjust(2, '0')
+      prefix         = (index + 1).to_s.rjust(2, '0')
       symbolize_item = item.transform_keys(&:to_sym)
 
       "[#{prefix}] #{symbolize_item[:title]}(#{symbolize_item[:likes_count]}) - #{symbolize_item[:article]}"
