@@ -5,7 +5,7 @@ RSpec.shared_context 'mock config.yml' do
     {
       user_name: 'sample_user_name',
       password: 'sample_password',
-      cache_directory: 'path/to/sample/directory'
+      cache_directory: './'
     }
   end
 
