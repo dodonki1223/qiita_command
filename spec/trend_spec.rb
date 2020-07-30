@@ -2,7 +2,7 @@
 
 require 'qiita_trend'
 require './spec/spec_helper'
-require './qiita_commands/trend/trend'
+require './qiita_commands/trend'
 
 module QiitaCommands
   describe Trend do

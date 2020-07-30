@@ -2,7 +2,7 @@
 
 require 'optparse'
 require './spec/spec_helper'
-require './qiita_commands/command_line/command_line'
+require './qiita_commands/command_line'
 require './spec/support/command_line_args_helper'
 require './spec/support/cli_spec_behavior'
 
