@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'qiita_trend'
-require './qiita_commands/config/config.rb'
+require './qiita_commands/config/config'
 
 module QiitaCommands
   class ConfigSettings
