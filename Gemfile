@@ -8,8 +8,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}" }
 # https://github.com/dodonki1223/qiita_trend
 gem 'qiita_trend'
 
+# https://github.com/rspec/rspec
+gem 'rspec'
+
 group :development do
-  # Linterツール
   # https://github.com/rubocop-hq/rubocop
   gem 'rubocop', '~> 0.88.0', require: false
   # コンソールの出力を読みやすい形で表示してくれる
