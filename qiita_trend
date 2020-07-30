@@ -1,0 +1,24 @@
+# この辺を参考にした
+# https://docs.ruby-lang.org/ja/2.5.0/doc/spec=2frubycmd.html#shebang
+
+#!/bin/sh
+# rubocop:disable all
+exec ruby -S -x $0 "$@"
+# rubocop:enable all
+
+#! ruby
+require 'qiita_trend'
+require './qiita_commands/config/set.rb'
+require './qiita_commands/command_line'
+require './qiita_commands/trend'
+
+QiitaCommands::ConfigSettings.perform
+
+args  = QiitaCommands::CLI.new
+trend = QiitaCommands::Trend.new(args.get :target)
+
+if args.get(:new)
+  trend.new_items.each { |item| puts item }
+else
+  trend.items.each { |item| puts item }
+end
