@@ -18,10 +18,10 @@ $ git clone git@github.com:dodonki1223/qiita_command.git
 $ bundle install
 ```
 
-### Qiitaのログイン情報を作成する
+### Qiitaのログイン情報を設定する
 
 weekly, monthly のトレンドを取得する時は設定が必要です  
-**dailyのみ取得した場合は設定不要です**
+**dailyのみ取得したい場合は設定不要です**
 
 ```shell
 $ cp config_sample.yml config.yml
