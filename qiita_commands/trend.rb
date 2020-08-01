@@ -7,8 +7,11 @@ module QiitaCommands
   class Trend
     def initialize(type)
       @type     = type
-      @target   = QiitaTrend::Trend.new(type)
       @highline = HighLine.new
+      @target   = QiitaTrend::Trend.new(type)
+    rescue QiitaTrend::Error::LoginFailureError => e
+      puts highline.color(e.message, :red)
+      exit 1
     end
 
     def daily?
