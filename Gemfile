@@ -11,6 +11,10 @@ gem 'qiita_trend'
 # https://github.com/rspec/rspec
 gem 'rspec'
 
+# 標準出力に色を付けることができるgem
+# https://github.com/JEG2/highline
+gem 'highline'
+
 group :development do
   # https://github.com/rubocop-hq/rubocop
   gem 'rubocop', '~> 0.88.0', require: false
