@@ -2,7 +2,7 @@
 
 Qiitaのトレンド情報（Daily, Weekly, Monthly）をコマンドで取得しコンソール上に表示することができます
 
-![00_sample](https://raw.githubusercontent.com/dodonki1223/image_garage/master/qiita_command/00_sample.gif)
+<img alt="00_sample" src="https://raw.githubusercontent.com/dodonki1223/image_garage/master/qiita_command/00_sample.gif" width="800px">
 
 ## 環境設定
 
