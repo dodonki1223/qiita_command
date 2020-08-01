@@ -38,7 +38,7 @@ module QiitaCommands
     def item_shaping(item, index)
       symbolize_item = item.transform_keys(&:to_sym)
 
-      "#{prefix(index)}#{title(symbolize_item[:title])}#{likes_count(symbolize_item[:likes_count])}\n#{article_url(symbolize_item[:article])}"
+      "#{prefix(index)} #{title(symbolize_item[:title])}#{likes_count(symbolize_item[:likes_count])}\n#{article_url(symbolize_item[:article])}"
     end
 
     def prefix(index)
