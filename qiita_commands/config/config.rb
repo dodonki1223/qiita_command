@@ -7,7 +7,8 @@ module QiitaCommands
     attr_reader :user_name, :password, :cache_directory
 
     def initialize
-      config = YAML.load_file('./config.yml').transform_keys(&:to_sym)
+      config_path = File.expand_path('../../config.yml', __dir__)
+      config = YAML.load_file(config_path).transform_keys(&:to_sym)
 
       @user_name       = config[:user_name]
       @password        = config[:password]

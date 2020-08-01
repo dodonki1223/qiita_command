@@ -10,6 +10,7 @@ RSpec.shared_context 'when mocking config.yml' do
   end
 
   before do
-    allow(YAML).to receive(:load_file).with('./config.yml').and_return(mock_yaml)
+    config_path = File.expand_path('../../config.yml', __dir__)
+    allow(YAML).to receive(:load_file).with(config_path).and_return(mock_yaml)
   end
 end

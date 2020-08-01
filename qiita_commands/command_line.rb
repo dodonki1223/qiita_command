@@ -2,7 +2,7 @@
 
 require 'optparse'
 require 'qiita_trend'
-require './qiita_commands/errors/invalid_option'
+require_relative './errors/invalid_option'
 
 module QiitaCommands
   class CLI

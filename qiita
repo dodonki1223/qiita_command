@@ -8,9 +8,9 @@ exec ruby -S -x $0 "$@"
 
 #! ruby
 require 'qiita_trend'
-require './qiita_commands/config/set.rb'
-require './qiita_commands/command_line'
-require './qiita_commands/trend'
+require_relative './qiita_commands/config/set'
+require_relative './qiita_commands/command_line'
+require_relative './qiita_commands/trend'
 
 QiitaCommands::ConfigSettings.perform
 
