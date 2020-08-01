@@ -46,7 +46,8 @@ module QiitaCommands
     end
 
     def exit_process(message)
-      puts message
+      highline = HighLine.new
+      puts highline.color(message, :red)
       exit 1
     end
   end
