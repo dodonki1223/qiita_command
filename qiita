@@ -12,13 +12,10 @@ require_relative './qiita_commands/config/set'
 require_relative './qiita_commands/command_line'
 require_relative './qiita_commands/trend'
 
-QiitaCommands::ConfigSettings.perform
-
 args  = QiitaCommands::CLI.new
-trend = QiitaCommands::Trend.new(args.get :target)
+QiitaCommands::ConfigSettings.perform unless args.get(:target) == QiitaTrend::TrendType::DAILY
 
-if args.get(:new)
-  trend.new_items.each { |item| puts item }
-else
-  trend.items.each { |item| puts item }
-end
+trend = QiitaCommands::Trend.new(args.get :target)
+items = args.get(:new) ? trend.new_items : trend.items
+
+items.each { |item| puts item }

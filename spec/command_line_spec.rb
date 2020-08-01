@@ -13,9 +13,7 @@ module QiitaCommands
 
         subject { described_class.new }
 
-        it 'システムが終了すること' do
-          expect { subject }.to raise_error(SystemExit)
-        end
+        it { expect { subject }.to raise_error(SystemExit) }
       end
 
       context 'when not exitst command line args' do
