@@ -58,7 +58,7 @@ module QiitaCommands
     end
 
     def article_url(str)
-      "    #{highline.color(str, :cyan)}"
+      "     #{highline.color(str, :cyan)}"
     end
   end
 end
