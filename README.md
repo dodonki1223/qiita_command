@@ -74,4 +74,5 @@ $ ./qiita --monthly -n
 
 ## その他
 
-Qiitaのトレンド情報の取得に関しては [qiita_trend](https://github.com/dodonki1223/qiita_trend) のgemを使用していますのでそちらを参照してください
+Qiitaのトレンド情報の取得に関しては [qiita_trend](https://github.com/dodonki1223/qiita_trend) を使用していますのでそちらを参照してください  
+もし動作しなくなったら [qiita_trend](https://github.com/dodonki1223/qiita_trend) のバージョンを上げることをオススメします
