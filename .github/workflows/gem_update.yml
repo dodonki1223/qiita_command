@@ -1,0 +1,24 @@
+name: GemUpdate
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      # いずれかのmatrixジョブが失敗した場合にGitHubは進行中のジョブをすべてキャンセルします
+      fail-fast: false
+      os: [ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        # ref: https://github.com/ruby/setup-ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          # https://github.com/ruby/setup-ruby#caching-bundle-install-automatically
+          bundler-cache: true
+      - name: Install dependencies
+        run: bundle install
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v1
