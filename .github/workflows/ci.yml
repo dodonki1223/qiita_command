@@ -1,9 +1,9 @@
-name: Ruby
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  ci:
     strategy:
       # いずれかのmatrixジョブが失敗した場合にGitHubは進行中のジョブをすべてキャンセルします
       fail-fast: false
