@@ -1,0 +1,35 @@
+name: GemUpdate
+
+on: [push]
+
+jobs:
+  create-gem-update:
+    strategy:
+      # いずれかのmatrixジョブが失敗した場合にGitHubは進行中のジョブをすべてキャンセルします
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        # ref: https://github.com/ruby/setup-ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      - name: Install dependencies
+        run: bundle install
+      - name: Settings Git
+        run: |
+          git config --global user.email ${{ secrets.MAIL_ADDRESS }}
+          git config --global user.name "dodonki1223"
+      - name: Create gem update pull request
+        # NOTE: hub コマンドがデフォルトで入っているようなのでそのまま使用する
+        run: |
+          git checkout -b gem_update
+          bundle update
+          git add .
+          git commit -m ':wrench: Gem Update'
+          git push origin gem_update
+          hub pull-request -m '🔧 Gem Update'
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
