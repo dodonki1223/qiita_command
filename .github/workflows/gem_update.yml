@@ -7,7 +7,6 @@ jobs:
     strategy:
       # いずれかのmatrixジョブが失敗した場合にGitHubは進行中のジョブをすべてキャンセルします
       fail-fast: false
-      os: [ubuntu]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
