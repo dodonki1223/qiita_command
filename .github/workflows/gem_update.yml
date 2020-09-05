@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: bundle install
       - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v1
+        uses: mxschmitt/action-tmate@v2
