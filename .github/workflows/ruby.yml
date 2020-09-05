@@ -26,3 +26,9 @@ jobs:
       run:  bundle exec rubocop
     - name: Run RSpec
       run: bundle exec rspec
+    # https://docs.github.com/ja/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v2
+      with:
+        name: code-coverage-report
+        path: coverage
