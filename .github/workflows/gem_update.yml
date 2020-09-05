@@ -1,6 +1,10 @@
 name: GemUpdate
 
-on: [push]
+# https://docs.github.com/ja/actions/reference/events-that-trigger-workflows#scheduled-events
+# 毎月の１日の７時にgem update のプルリクを作成する
+on:
+  schedule:
+    - cron: '0 22 1 * *'
 
 jobs:
   create-gem-update:
@@ -23,6 +27,7 @@ jobs:
           git config --global user.name "dodonki1223"
       - name: Create gem update pull request
         # NOTE: hub コマンドがデフォルトで入っているようなのでそのまま使用する
+        #       https://github.com/github/hub#github-actions
         run: |
           git checkout -b gem_update
           bundle update
