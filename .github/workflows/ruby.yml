@@ -12,23 +12,34 @@ jobs:
         ruby: [2.6, 2.7]
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      # ref: https://github.com/ruby/setup-ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        # https://github.com/ruby/setup-ruby#caching-bundle-install-automatically
-        bundler-cache: true
-    - name: Install dependencies
-      run: bundle install
-    - name: Run Rubocop
-      run:  bundle exec rubocop
-    - name: Run RSpec
-      run: bundle exec rspec
-    # https://docs.github.com/ja/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v2
-      with:
-        name: code-coverage-report
-        path: coverage
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        # ref: https://github.com/ruby/setup-ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          # https://github.com/ruby/setup-ruby#caching-bundle-install-automatically
+          bundler-cache: true
+      - name: Install dependencies
+        run: bundle install
+      - name: Run Rubocop
+        run:  bundle exec rubocop
+      - name: Run RSpec
+        run: bundle exec rspec
+      # https://docs.github.com/ja/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: coverage
+      # https://github.com/marketplace/actions/action-slack
+      - name: Github Actions notify to Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        if: always()
