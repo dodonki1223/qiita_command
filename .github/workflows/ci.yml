@@ -1,9 +1,9 @@
-name: Ruby
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  ci:
     strategy:
       # いずれかのmatrixジョブが失敗した場合にGitHubは進行中のジョブをすべてキャンセルします
       fail-fast: false
@@ -38,6 +38,8 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          mention: 'here'
+          if_mention: failure
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

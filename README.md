@@ -1,5 +1,7 @@
 # qiita_command
 
+![CI](https://github.com/dodonki1223/qiita_command/workflows/CI/badge.svg?branch=master)
+
 Qiitaのトレンド情報（Daily, Weekly, Monthly）をコマンドで取得しコンソール上に表示することができます
 
 <img alt="00_sample" src="https://raw.githubusercontent.com/dodonki1223/image_garage/master/qiita_command/00_sample.gif" width="800px">
