@@ -5,7 +5,7 @@ name: GemUpdate
 # 毎月の１日の７時にgem update のプルリクを作成する
 on:
   schedule:
-    - cron: '10 * * * *'
+    - cron: '*/15 * * * *'
     # - cron: '0 22 1 * *'
 
 jobs:
