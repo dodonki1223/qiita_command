@@ -3,9 +3,7 @@ name: GemUpdate
 # https://docs.github.com/ja/actions/reference/events-that-trigger-workflows#scheduled-events
 # 注意：ベースブランチの直近のコミットでのみしか実行されない
 # 毎月の１日の７時にgem update のプルリクを作成する
-on:
-  schedule:
-    - cron: '0 22 1 * *'
+on: push
 
 jobs:
   create-gem-update:
