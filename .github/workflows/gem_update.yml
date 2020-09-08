@@ -30,12 +30,12 @@ jobs:
         # NOTE: hub コマンドがデフォルトで入っているようなのでそのまま使用する
         #       https://github.com/github/hub#github-actions
         run: |
-          git checkout -b gem_update
+          git checkout -b "gem_update_`date +%Y%m%d`"
           bundle update
           git add .
           git commit -m ':wrench: Gem Update'
-          git push origin gem_update
-          hub pull-request -b master -m '🔧 Gem Update'
+          git push origin "gem_update_`date +%Y%m%d`"
+          hub pull-request -b master -m "🔧 Gem Update `date +%Y-%m-%d`""
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Github Actions notify to Slack
