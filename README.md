@@ -74,6 +74,21 @@ $ ./qiita -w -n
 $ ./qiita --monthly -n
 ```
 
+## GitHub Actions
+
+### CI
+
+CIをGitHub Actionsにて以下のものを実行するようにしています
+
+- Rubocopの実行
+- RSpecの実行
+- コードカバレッジを作成しGitHub Actions にアップロード
+- GitHub Actions の結果をSlackに通知
+
+### Gem Update の自動化
+
+GitHub Actions の `on.schedule` を使用して毎月１日にGem Update用のプルリクが自動で作られるように設定してます
+
 ## その他
 
 Qiitaのトレンド情報の取得に関しては [qiita_trend](https://github.com/dodonki1223/qiita_trend) を使用していますのでそちらを参照してください  
