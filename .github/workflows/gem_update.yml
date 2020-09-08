@@ -43,7 +43,7 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-          mention: 'here'
+          mention: 'here'  # slackのメンションになる（この設定だと `@here`）
           if_mention: failure
         env:
           GITHUB_TOKEN: ${{ github.token }}
