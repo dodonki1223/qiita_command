@@ -7,8 +7,9 @@ require './qiita_commands/trend'
 module QiitaCommands
   describe Trend do
     describe '#initialize' do
-      include_context 'when disable standard output'
       subject(:instance) { described_class.new(type) }
+
+      include_context 'when disable standard output'
 
       let(:type) { QiitaTrend::TrendType::WEEKLY }
 
