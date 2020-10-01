@@ -20,6 +20,8 @@ Naming/MethodParameterName:
 # １行の長さのMAXを150文字とする
 Layout/LineLength:
   Max: 150
+  Exclude:
+    - 'Gemfile'
 
 # メソッドの行数をコメントを除いて５０行までとする
 Metrics/MethodLength:

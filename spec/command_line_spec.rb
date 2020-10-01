@@ -8,10 +8,10 @@ module QiitaCommands
   describe CLI do
     describe '#initialise' do
       shared_examples 'system shutdown' do
+        subject { described_class.new }
+
         include_context 'when set command line args'
         include_context 'when disable standard output'
-
-        subject { described_class.new }
 
         it { expect { subject }.to raise_error(SystemExit) }
       end
