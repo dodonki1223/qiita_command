@@ -4,6 +4,7 @@ name: GemUpdate
 # 注意：ベースブランチの直近のコミットでのみしか実行されない
 # 毎月の1日の9時にgem update のプルリクを作成する
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 1 * *'
 
