@@ -22,14 +22,14 @@ module QiitaCommands
         include_examples 'system shutdown'
       end
 
-      context 'when multiple -d and -w and -m specified' do
-        let(:argv) { %w[-w -m] }
+      context 'when multiple -n and -p specified' do
+        let(:argv) { %w[-n -p] }
 
         include_examples 'system shutdown'
       end
 
-      context 'when multiple --daily and --weekly and --monthly specified' do
-        let(:argv) { %w[--weekly --monthly] }
+      context 'when multiple --normal and --personal specified' do
+        let(:argv) { %w[--normal --personal] }
 
         include_examples 'system shutdown'
       end
@@ -60,7 +60,7 @@ module QiitaCommands
         include_context 'when set command line args'
         let(:argv) { %w[] }
 
-        it { expect(cli.get(:target)).to eq('daily') }
+        it { expect(cli.get(:target)).to eq('normal') }
       end
 
       context 'when not exists key name' do

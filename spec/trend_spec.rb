@@ -11,7 +11,7 @@ module QiitaCommands
 
       include_context 'when disable standard output'
 
-      let(:type) { QiitaTrend::TrendType::WEEKLY }
+      let(:type) { QiitaTrend::TrendType::PERSONAL }
 
       before { allow(QiitaTrend::Trend).to receive(:new).with(type).and_raise(QiitaTrend::Error::LoginFailureError) }
 
@@ -75,81 +75,43 @@ module QiitaCommands
         allow(QiitaTrend::Trend).to receive(:new).with(type).and_return(qiita_trend_mock)
       end
 
-      describe '#daily?' do
+      describe '#normal?' do
         let(:trend) { described_class.new(type) }
 
-        context 'when trend type is daily' do
-          let(:type) { QiitaTrend::TrendType::DAILY }
+        context 'when trend type is normal' do
+          let(:type) { QiitaTrend::TrendType::NORMAL }
 
-          it { expect(trend.daily?).to eq(true) }
+          it { expect(trend.normal?).to eq(true) }
         end
 
-        context 'when trend type is weekly' do
+        context 'when trend type is personal' do
           include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::WEEKLY }
+          let(:type) { QiitaTrend::TrendType::PERSONAL }
 
-          it { expect(trend.daily?).to eq(false) }
-        end
-
-        context 'when trend type is monthly' do
-          include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::MONTHLY }
-
-          it { expect(trend.daily?).to eq(false) }
+          it { expect(trend.normal?).to eq(false) }
         end
       end
 
-      describe '#weekly?' do
+      describe '#personal?' do
         let(:trend) { described_class.new(type) }
 
-        context 'when trend type is daily' do
-          let(:type) { QiitaTrend::TrendType::DAILY }
+        context 'when trend type is normal' do
+          let(:type) { QiitaTrend::TrendType::NORMAL }
 
-          it { expect(trend.weekly?).to eq(false) }
+          it { expect(trend.personal?).to eq(false) }
         end
 
-        context 'when trend type is weekly' do
+        context 'when trend type is personal' do
           include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::WEEKLY }
+          let(:type) { QiitaTrend::TrendType::PERSONAL }
 
-          it { expect(trend.weekly?).to eq(true) }
-        end
-
-        context 'when trend type is monthly' do
-          include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::MONTHLY }
-
-          it { expect(trend.weekly?).to eq(false) }
-        end
-      end
-
-      describe '#monthly?' do
-        let(:trend) { described_class.new(type) }
-
-        context 'when trend type is daily' do
-          let(:type) { QiitaTrend::TrendType::DAILY }
-
-          it { expect(trend.monthly?).to eq(false) }
-        end
-
-        context 'when trend type is weekly' do
-          include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::WEEKLY }
-
-          it { expect(trend.monthly?).to eq(false) }
-        end
-
-        context 'when trend type is monthly' do
-          include_context 'when mocking config.yml'
-          let(:type) { QiitaTrend::TrendType::MONTHLY }
-
-          it { expect(trend.monthly?).to eq(true) }
+          it { expect(trend.personal?).to eq(true) }
         end
       end
 
       shared_examples 'contains title and laikes_count and article' do
         include_context 'when mocking config.yml'
-        let(:type) { QiitaTrend::TrendType::DAILY }
+        let(:type) { QiitaTrend::TrendType::NORMAL }
 
         it 'タイトル、いいね数、ページURLが含まれていること' do
           items.each_with_index do |item, index|

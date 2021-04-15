@@ -15,7 +15,7 @@ module QiitaCommands
     end
 
     def normal?
-      type == QiitaTrend::TrendType::NOMARL
+      type == QiitaTrend::TrendType::NORMAL
     end
 
     def personal?
