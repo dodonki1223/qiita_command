@@ -14,16 +14,12 @@ module QiitaCommands
       exit 1
     end
 
-    def daily?
-      type == QiitaTrend::TrendType::DAILY
+    def normal?
+      type == QiitaTrend::TrendType::NOMARL
     end
 
-    def weekly?
-      type == QiitaTrend::TrendType::WEEKLY
-    end
-
-    def monthly?
-      type == QiitaTrend::TrendType::MONTHLY
+    def personal?
+      type == QiitaTrend::TrendType::PERSONAL
     end
 
     def items
@@ -31,6 +27,8 @@ module QiitaCommands
     end
 
     def new_items
+      return nil if type == QiitaTrend::TrendType::PERSONAL
+
       target.new_items.each_with_object([]).with_index { |(item, result), index| result << item_shaping(item, index) }
     end
 

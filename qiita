@@ -13,9 +13,9 @@ require_relative './qiita_commands/command_line'
 require_relative './qiita_commands/trend'
 
 args  = QiitaCommands::CLI.new
-QiitaCommands::ConfigSettings.perform unless args.get(:target) == QiitaTrend::TrendType::DAILY
+QiitaCommands::ConfigSettings.perform unless args.get(:target) == QiitaTrend::TrendType::NORMAL
 
 trend = QiitaCommands::Trend.new(args.get :target)
 items = args.get(:new) ? trend.new_items : trend.items
 
-items.each { |item| puts item }
+items.each { |item| puts item } unless items.nil?

@@ -13,8 +13,7 @@ module QiitaCommands
       opts = OptionParser.new
 
       opts.on('-d', '--daily', 'get daily qiita trend')         { @options[:target] = QiitaTrend::TrendType::DAILY }
-      opts.on('-w', '--weekly', 'get weekly qiita trend')       { @options[:target] = QiitaTrend::TrendType::WEEKLY }
-      opts.on('-m', '--monthly', 'get monthly qiita trend')     { @options[:target] = QiitaTrend::TrendType::MONTHLY }
+      opts.on('-p', '--personal', 'get personal qiita trend')   { @options[:target] = QiitaTrend::TrendType::PERSONAL }
       opts.on('-n', '--new', 'get qiita trend for new article') { |v| @options[:new] = v }
 
       raise QiitaCommands::InvalidOption, 'Invalid option: Multiple daily and weekly and monthly cannot be specified.' unless valid_args?
@@ -39,8 +38,8 @@ module QiitaCommands
     private
 
     def valid_args?
-      # daily, weekly, monthly の指定が複数あった場合は不正と判断する
-      return false if ARGV.grep(/\A(-d|-w|-m|--daily|--weekly|--monthly)\z/).length >= 2
+      # daily, personal の指定が複数あった場合は不正と判断する
+      return false if ARGV.grep(/\A(-d|-p|--daily|--personal|)\z/).length >= 2
 
       true
     end
