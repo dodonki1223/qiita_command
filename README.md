@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/dodonki1223/qiita_command/workflows/CI/badge.svg?branch=master)
 
-Qiitaのトレンド情報（Daily, Weekly, Monthly）をコマンドで取得しコンソール上に表示することができます
+Qiitaのトレンド情報（Normal, Personal）をコマンドで取得しコンソール上に表示することができます
 
 <img alt="00_sample" src="https://raw.githubusercontent.com/dodonki1223/image_garage/master/qiita_command/00_sample.gif" width="800px">
 
@@ -22,8 +22,8 @@ $ bundle install
 
 ### Qiitaのログイン情報を設定する
 
-weekly, monthly のトレンドを取得する時は設定が必要です  
-**dailyのみ取得したい場合は設定不要です**
+personal のトレンドを取得する時は設定が必要です  
+**normalのみ取得したい場合は設定不要です**
 
 ```shell
 $ cp config_sample.yml config.yml
@@ -51,27 +51,15 @@ cache_directory: path/to/sample
 ## 使い方
 
 ```shell
-# dailyのトレンドを取得する
+# normalのトレンドを取得する
 $ ./qiita
 
-# dailyのトレンドのNEWのものだけを取得する
-$ ./qiita -n
+# normalのトレンドのNEWのものだけを取得する
+$ ./qiita --new
 
-# weeklyのトレンドを取得する
-$ ./qiita -w
-$ ./qiita --weekly
-
-# weeklyのトレンドのNEWのものだけを取得する
-$ ./qiita -w -n
-$ ./qiita --weekly -n
-
-# monthlyのトレンドを取得する
-$ ./qiita -w
-$ ./qiita --monthly
-
-# monthlyのトレンドのNEWのものだけを取得する
-$ ./qiita -w -n
-$ ./qiita --monthly -n
+# personalのトレンドを取得する
+$ ./qiita -p
+$ ./qiita --personal
 ```
 
 ## GitHub Actions
