@@ -50,7 +50,7 @@ GEM
       pry (~> 0.11)
       yard (~> 0.9.11)
     public_suffix (4.0.6)
-    qiita_trend (0.5.0)
+    qiita_trend (0.5.1)
       mechanize (~> 2.7)
       nokogiri (~> 1.11)
     racc (1.6.0)
