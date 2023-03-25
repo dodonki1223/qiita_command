@@ -30,12 +30,13 @@ jobs:
         run:  bundle exec rubocop
       - name: Run RSpec
         run: bundle exec rspec
-      # https://docs.github.com/ja/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v2
-        with:
-          name: code-coverage-report
-          path: coverage
+      - name: Upload test coverage
+        id: upload-test-coverage
+        uses: ./.github/actions/upload-test-coverage
+      - name: Display test coverage in summary
+        run: |
+          coverage_value=${{ steps.upload-test-coverage.outputs.coverage-value }}
+          echo "# Coverage report: $coverage_value%" >> $GITHUB_STEP_SUMMARY
       # https://github.com/marketplace/actions/action-slack
       - name: Github Actions notify to Slack
         uses: 8398a7/action-slack@v3
