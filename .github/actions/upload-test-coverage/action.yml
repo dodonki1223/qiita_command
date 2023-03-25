@@ -1,0 +1,21 @@
+name: "Upload test coverage file"
+description: "Upload test coverage file to the desired location"
+outputs:
+  coverage-value:
+    description: "coverage value"
+    value: ${{ steps.coverage-value-getter.outputs.coverage-value }}
+runs:
+  using: "composite"
+  steps:
+    - name: "Archive code coverage results"
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: coverage
+
+    - name: "Get coverage value"
+      id: coverage-value-getter
+      run: |
+        coverage_value=`cat ./coverage/.last_run.json | jq -r .result.line`
+        echo "coverage-value=$coverage_value" >> "$GITHUB_OUTPUT"
+      shell: bash
